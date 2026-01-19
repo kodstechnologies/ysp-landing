@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout the repository
+      # 1️⃣ Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4️⃣ Build project (Vite)
+      # 4️⃣ Build Vite project
       - name: Build project
         run: npm run build
 
@@ -34,7 +34,20 @@ jobs:
           echo "Testing SSH to EC2..."
           nc -vz ${{ secrets.EC2_HOST }} 22
 
-      # 6️⃣ Deploy dist/ to EC2 using SCP
+      # 6️⃣ Prepare target directory and fix permissions
+      - name: Prepare EC2 target directory
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            echo "Creating target directory if it doesn't exist..."
+            sudo mkdir -p /var/www/shramik-landing
+            sudo chown -R $USER:$USER /var/www/shramik-landing
+            sudo chmod -R 755 /var/www/shramik-landing
+
+      # 7️⃣ Deploy dist/ to EC2 using SCP
       - name: Deploy build to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -44,24 +57,23 @@ jobs:
           source: "dist/*"
           target: "/var/www/shramik-landing"
           port: 22
-          timeout: 60s
           overwrite: true
+          timeout: 60s
 
-      # 7️⃣ Fix permissions & reload Nginx
+      # 8️⃣ Fix permissions for Nginx & reload
       - name: Fix permissions & reload Nginx
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          port: 22
           script: |
-            echo "Setting permissions..."
+            echo "Setting ownership for Nginx..."
             sudo chown -R www-data:www-data /var/www/shramik-landing
             sudo chmod -R 755 /var/www/shramik-landing
             echo "Reloading Nginx..."
             sudo systemctl reload nginx
 
-      # 8️⃣ Success message
+      # 9️⃣ Deployment complete
       - name: Deployment Complete
         run: echo "Shramik Landing Page deployed successfully!"
