@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout the code
+      # 1️⃣ Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4️⃣ Build the project
+      # 4️⃣ Build project (Vite)
       - name: Build project
         run: npm run build
 
@@ -34,7 +34,7 @@ jobs:
           echo "Testing SSH to EC2..."
           nc -vz ${{ secrets.EC2_HOST }} 22
 
-      # 6️⃣ Deploy dist/ to EC2 via SCP
+      # 6️⃣ Deploy dist/ to EC2 using SCP
       - name: Deploy build to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -47,7 +47,7 @@ jobs:
           timeout: 60s
           overwrite: true
 
-      # 7️⃣ Fix permissions and reload Nginx
+      # 7️⃣ Fix permissions & reload Nginx
       - name: Fix permissions & reload Nginx
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -61,3 +61,7 @@ jobs:
             sudo chmod -R 755 /var/www/shramik-landing
             echo "Reloading Nginx..."
             sudo systemctl reload nginx
+
+      # 8️⃣ Success message
+      - name: Deployment Complete
+        run: echo "Shramik Landing Page deployed successfully!"
