@@ -25,7 +25,7 @@ export default function Hero() {
             {/* Text Content Section - Contains headline, description, and CTA */}
             <div className="flex-1 text-center lg:text-left">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight mb-4">
-                    Find Genuine Jobs <br />
+                    Findd Genuine Jobs <br />
                     <span className="text-blue-600">Hire Verified Talent</span>
                 </h1>
 
