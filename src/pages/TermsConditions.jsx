@@ -147,7 +147,7 @@ const TermsConditions = () => {
                 <p className="text-slate-500 italic text-sm sm:text-base mb-10 leading-relaxed max-w-2xl border-l-2 border-slate-100 pl-4">
                   By registering or applying for jobs through{" "}
                   <strong className="text-blue-700 font-extrabold">
-                    Shramik
+                    Shramik jobing solutions
                   </strong>
                   , you acknowledge and agree to the following terms and
                   conditions:
@@ -181,7 +181,7 @@ const TermsConditions = () => {
                     },
                     {
                       t: "Mandatory Due Diligence",
-                      c: "Users must perform their own background checks on potential employers; Shramik assumes no responsibility for employer conduct.",
+                      c: "Users must perform their own background checks on potential employers; Shramik jobing solutions assumes no responsibility for employer conduct.",
                     },
                     {
                       t: "Governing Law",
@@ -220,7 +220,7 @@ const TermsConditions = () => {
                 </div>
 
                 <p className="text-slate-500 italic text-sm sm:text-base mb-10 border-l-2 border-slate-100 pl-4">
-                  By registering or using Shramik as a Recruiter, you agree to
+                  By registering or using Shramik jobing solutions as a Recruiter, you agree to
                   the following terms:
                 </p>
 
@@ -339,7 +339,7 @@ const TermsConditions = () => {
                     {
                       n: 8,
                       t: "Indemnity",
-                      c: "You agree to indemnify Shramik against claims arising from misuse of candidate data.",
+                      c: "You agree to indemnify Shramik jobing solutions  against claims arising from misuse of candidate data.",
                     },
                     {
                       n: 9,

@@ -43,7 +43,7 @@ export default function HowItWorks() {
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">How Shramik Works </h2>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">How Shramik jobing solutions Works </h2>
                     <p className="mt-4 text-slate-600">A simple, secure path from registration to hiring.</p>
                 </div>
 

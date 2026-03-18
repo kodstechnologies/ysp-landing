@@ -90,7 +90,7 @@ export default function Hero() {
                     >
                         <img
                             src={previewImage}
-                            alt="Shramik App Preview"
+                            alt="Shramik jobing solutions App Preview"
                             className="w-full h-full object-cover"
                         />
                     </div>

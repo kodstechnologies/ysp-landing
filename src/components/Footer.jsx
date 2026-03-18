@@ -52,7 +52,7 @@ export default function Footer() {
               />
             </HashLink>
             <p className="text-slate-600 max-w-sm mb-6 leading-relaxed text-sm sm:text-base">
-              Shramik is a digital job marketplace built to simplify hiring for
+              Shramik jobing solutions is a digital job marketplace built to simplify hiring for
               recruiters and job discovery for skilled workers. We focus on
               trust, transparency, and accessibility.
             </p>
@@ -73,7 +73,7 @@ export default function Footer() {
                 shramikan2025@gmail.com
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="text-blue-600 w-4 h-4" /> +91-80-XXXXXXX
+                <Phone className="text-blue-600 w-4 h-4" /> +91-9731581462
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="text-blue-600 w-4 h-4 mt-0.5" />
@@ -103,8 +103,16 @@ export default function Footer() {
                   Delete My Account
                 </Link>
               </li>
+              <li className="mt-3 pt-3 border-t border-slate-200">
+                <p className="text-[11px] text-slate-400 tracking-wide uppercase">
+                  GST Number
+                </p>
+                <p className="text-sm text-slate-600 font-medium">
+                  29ABCDE1234F2Z5
+                </p>
+              </li>
 
-              <li>
+              <li className="mt-3 pt-3 border-t border-slate-200">
                 <span className="text-slate-400 cursor-default">
                   Available: English, Hindi, Kannada{" "}
                 </span>
@@ -116,7 +124,7 @@ export default function Footer() {
         {/* Bottom Copyright Bar */}
         <div className="pt-5 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-slate-500 font-bold uppercase tracking-tight">
-            © {new Date().getFullYear()} SHRAMIK PLATFORM. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} SHRAMIK JOBING SOLUTIONS PLATFORM. ALL RIGHTS RESERVED.
           </p>
           <div className="flex gap-4 text-[10px] text-slate-400 font-bold uppercase tracking-widest">
             <span>Secure Payments via Razorpay </span>

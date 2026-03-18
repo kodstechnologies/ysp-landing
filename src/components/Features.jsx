@@ -66,7 +66,7 @@ export default function Features() {
                         Designed for the Modern Workforce
                     </h2>
                     <p className="text-slate-600 text-base sm:text-lg">
-                        Shramik bridges the gap between employers and skilled non-degree workers.
+                        Shramik jobing solutions bridges the gap between employers and skilled non-degree workers.
                     </p>
                 </div>
 

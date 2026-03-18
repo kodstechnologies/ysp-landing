@@ -50,10 +50,10 @@ const PrivacyPolicy = () => {
             {/* Introduction */}
             <section>
               <p className="text-slate-600 leading-relaxed italic text-sm sm:text-base">
-                Shramik ("we", "our", "us") respects your privacy and is
+                Shramik jobing solutions ("we", "our", "us") respects your privacy and is
                 committed to protecting your personal information. This Privacy
                 Policy explains how we collect, use, share, and safeguard your
-                data when you access or use the Shramik website, web platform,
+                data when you access or use the Shramik jobing solutions website, web platform,
                 and related services.
               </p>
             </section>
