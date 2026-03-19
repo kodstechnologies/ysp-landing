@@ -108,7 +108,7 @@ export default function Footer() {
                   GST Number
                 </p>
                 <p className="text-sm text-slate-600 font-medium">
-                  29ABCDE1234F2Z5
+                  29BIMPS7820K1ZG
                 </p>
               </li>
 
