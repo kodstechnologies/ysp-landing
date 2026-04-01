@@ -67,6 +67,7 @@ export default function Footer() {
             </ul>
           </div>
 
+
           {/* Contact Section */}
           <div>
             <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6 border-l-4 border-[#007BC9] pl-3">
