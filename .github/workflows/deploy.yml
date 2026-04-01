@@ -10,23 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2. Setup Node
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # 3. Install dependencies
       - name: Install dependencies
         run: npm ci
 
+      # 4. Build project
       - name: Build project
         run: npm run build
 
+      # 5. Test SSH connection
       - name: Test SSH connectivity
         run: nc -vz ${{ secrets.EC2_HOST }} 22
 
+      # 6. Prepare server (clean old build safely)
       - name: Prepare target directory
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -34,9 +40,11 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            mkdir -p /home/ubuntu/ysp-landing/dist
-            rm -rf /home/ubuntu/ysp-landing/dist/*
+            sudo mkdir -p /home/ubuntu/ysp-landing/dist
+            sudo rm -rf /home/ubuntu/ysp-landing/dist/*
+            sudo chown -R $USER:$USER /home/ubuntu/ysp-landing/dist
 
+      # 7. Upload new build
       - name: Deploy build to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -48,7 +56,8 @@ jobs:
           port: 22
           overwrite: true
 
-      - name: Fix permissions & reload Nginx
+      # 8. Fix permissions for Nginx & restart
+      - name: Fix permissions & restart Nginx
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -61,5 +70,6 @@ jobs:
             sudo chown -R www-data:www-data /home/ubuntu/ysp-landing
             sudo systemctl restart nginx
 
+      # 9. Done
       - name: Deployment Complete
-        run: echo "YSP Landing Page deployed successfully!"
+        run: echo "YSP Landing Page deployed successfully 🚀"
