@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="bg-slate-900 border-t border-slate-800 pt-20 pb-10 sm:px-6 lg:px-8 text-slate-300"
+      className="bg-deep-blue border-t border-white/5 pt-20 pb-10 sm:px-6 lg:px-8 text-slate-300"
     >
       <div className="max-w-7xl mx-auto px-4">
         {/* Main footer content in responsive grid */}
@@ -15,24 +15,24 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <HashLink to="/#" className="flex items-center gap-2 mb-6 group">
-              <div className="bg-gradient-to-br from-[#007BC9] to-[#006BB0] p-1.5 rounded-lg">
+              <div className="bg-vibrant-orange p-1.5 rounded-lg shadow-lg shadow-orange-900/20">
                 <Fuel className="text-white" size={20} />
               </div>
               <span className="text-xl font-black tracking-tighter text-white">
-                YSP<span className="text-[#007BC9]">FUEL</span>
+                YSP<span className="text-lochmara">FUEL</span>
               </span>
             </HashLink>
             <p className="text-slate-400 max-w-sm mb-8 leading-relaxed text-sm">
               The next generation fuel loyalty and transaction management system. Empowering petrol pumps with QR-based digital solutions and real-time analytics.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="p-2 bg-slate-800 rounded-lg hover:bg-[#007BC9] hover:text-white transition-all">
+              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-vibrant-orange hover:text-white transition-all">
                 <Twitter size={18} />
               </a>
-              <a href="#" className="p-2 bg-slate-800 rounded-lg hover:bg-[#007BC9] hover:text-white transition-all">
+              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-vibrant-orange hover:text-white transition-all">
                 <Linkedin size={18} />
               </a>
-              <a href="#" className="p-2 bg-slate-800 rounded-lg hover:bg-[#007BC9] hover:text-white transition-all">
+              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-vibrant-orange hover:text-white transition-all">
                 <Facebook size={18} />
               </a>
             </div>
@@ -100,7 +100,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/legal" className="hover:text-[#007BC9] transition-colors">
+                <Link to="/legal" className="hover:text-vibrant-orange transition-colors">
                   Privacy Policy
                 </Link>
               </li>
@@ -116,7 +116,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-tight text-slate-500">
-            <ShieldCheck size={16} className="text-[#007BC9]" />
+            <ShieldCheck size={16} className="text-golden-yellow" />
             <span>© {new Date().getFullYear()} YSP FUEL PLUS. ALL RIGHTS RESERVED.</span>
           </div>
           <div className="flex gap-6 text-[10px] text-slate-500 font-bold uppercase tracking-widest">

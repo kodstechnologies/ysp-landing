@@ -11,7 +11,7 @@ import CTA from '../components/CTA';
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col overflow-hidden bg-white selection:bg-[#007BC9] selection:text-white">
+    <div className="flex flex-col overflow-hidden bg-white selection:bg-lochmara selection:text-white">
       <Hero />
       <Features />
       <HowItWorks />

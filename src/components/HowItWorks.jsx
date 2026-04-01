@@ -52,14 +52,20 @@ export default function HowItWorks() {
                     <div className="hidden md:block absolute top-[40px] left-[10%] right-[10%] h-1 bg-slate-100 -z-10"></div>
                     {steps.map((step, index) => (
                         <div key={index} className="flex flex-col items-center text-center group">
-                            <div className={`${step.color} w-20 h-20 rounded-3xl flex items-center justify-center mb-8 shadow-xl shadow-blue-200 group-hover:scale-110 transition-transform duration-300 relative z-20`}>
+                            <div className={`${
+                                index === 0 ? "bg-lochmara" : 
+                                index === 1 ? "bg-vibrant-orange" : 
+                                index === 2 ? "bg-deep-blue" : "bg-golden-yellow"
+                            } w-20 h-20 rounded-3xl flex items-center justify-center mb-8 shadow-xl shadow-blue-200 group-hover:scale-110 transition-transform duration-300 relative z-20`}>
                                 {step.icon}
-                                <div className="absolute -top-3 -right-3 w-8 h-8 bg-slate-900 text-white rounded-full flex items-center justify-center font-black text-xs">
+                                <div className="absolute -top-3 -right-3 w-8 h-8 bg-white text-deep-blue rounded-full flex items-center justify-center font-black text-xs shadow-md">
                                     {index + 1}
                                 </div>
                             </div>
-                            <span className="text-[10px] font-black text-[#007BC9] uppercase tracking-widest mb-2 block">{step.role}</span>
-                            <h3 className="text-xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-[#007BC9] transition-colors">{step.title}</h3>
+                            <span className={`text-[10px] font-black uppercase tracking-widest mb-2 block ${
+                                index % 2 === 0 ? "text-lochmara" : "text-vibrant-orange"
+                            }`}>{step.role}</span>
+                            <h3 className="text-xl font-black text-deep-blue mb-4 tracking-tight group-hover:text-vibrant-orange transition-colors">{step.title}</h3>
                             <p className="text-slate-500 text-sm font-medium leading-relaxed max-w-[200px]">{step.desc}</p>
                             {index < steps.length - 1 && <div className="md:hidden my-6"><ArrowDown className="text-slate-300" /></div>}
                         </div>

@@ -44,21 +44,20 @@ export default function ProductModules() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {modules.map((mod, idx) => (
             <div key={idx} className="bg-slate-50 p-8 md:p-12 rounded-[3rem] border border-slate-100 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
-              {/* Usage Badge */}
               <div className={`absolute top-6 right-6 px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase ${
                 mod.title.includes("Customer") 
-                  ? "bg-purple-100 text-purple-600" 
-                  : "bg-blue-100 text-[#007BC9]"
+                  ? "bg-golden-yellow text-deep-blue" 
+                  : "bg-vibrant-orange/10 text-vibrant-orange"
               }`}>
                 {mod.title.includes("Customer") ? "Public Use" : "Internal Use"}
               </div>
 
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="p-5 bg-white rounded-3xl shadow-sm">
-                  {mod.icon}
+                  {React.cloneElement(mod.icon, { className: `w-10 h-10 ${idx % 2 === 0 ? "text-lochmara" : "text-vibrant-orange"}` })}
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-black text-slate-900 tracking-tight">{mod.title}</h3>
+                  <h3 className="text-2xl font-black text-deep-blue tracking-tight">{mod.title}</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">{mod.desc}</p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
                     {mod.features.map((feat, fIdx) => (

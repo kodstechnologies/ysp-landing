@@ -61,7 +61,7 @@ const DeleteAccount = () => {
                 type="tel"
                 required
                 placeholder="e.g. +91 9876543210"
-                className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 focus:ring-4 focus:ring-red-100 focus:border-red-500 outline-none transition-all font-bold text-lg"
+                className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 focus:ring-4 focus:ring-orange-100 focus:border-vibrant-orange outline-none transition-all font-bold text-lg"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
@@ -107,7 +107,7 @@ const DeleteAccount = () => {
       <div className="mt-12 text-center">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-600 font-bold text-sm transition-all hover:gap-4"
+          className="inline-flex items-center gap-2 text-slate-400 hover:text-vibrant-orange font-bold text-sm transition-all hover:gap-4"
         >
           <ArrowRight size={16} className="rotate-180" /> Changed your mind? Back to Home
         </Link>

@@ -55,14 +55,14 @@ const TermsConditions = () => {
       <main className="flex-grow pt-24 pb-20 px-4">
         <div className="max-w-4xl mx-auto bg-white rounded-[3rem] shadow-2xl border border-slate-200 overflow-hidden">
           {/* Header Banner */}
-          <div className="bg-slate-900 px-8 py-12 text-white relative overflow-hidden">
+          <div className="bg-deep-blue px-8 py-12 text-white relative overflow-hidden">
             <div className="relative z-10 space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-widest leading-none">
-                <Scale size={14} /> Legal Agreement
+                <Scale size={14} className="text-golden-yellow" /> Legal Agreement
               </div>
 
               <h1 className="text-4xl md:text-6xl font-black italic tracking-tight">
-                Terms & <span className="text-[#007BC9]">Conditions</span>
+                Terms & <span className="text-vibrant-orange">Conditions</span>
               </h1>
 
               <p className="text-slate-400 text-sm font-medium">
@@ -74,14 +74,14 @@ const TermsConditions = () => {
           </div>
 
           <div className="p-8 md:p-12 space-y-12">
-            <p className="text-slate-600 leading-relaxed font-bold italic border-l-4 border-[#007BC9] pl-6 py-2">
+            <p className="text-slate-600 leading-relaxed font-bold italic border-l-4 border-lochmara pl-6 py-2">
               Please read these terms carefully before using the YSP Fuel Plus platform. These terms govern your access to and use of our mobile applications and web dashboard.
             </p>
 
             <div className="grid gap-8">
               {sections.map((section, idx) => (
                 <div key={idx} className="group p-6 rounded-3xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
-                  <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tight group-hover:text-[#007BC9] transition-colors">
+                  <h3 className="text-xl font-black text-deep-blue mb-3 tracking-tight group-hover:text-lochmara transition-colors">
                     {section.title}
                   </h3>
                   <p className="text-slate-500 font-medium leading-relaxed">
@@ -102,7 +102,7 @@ const TermsConditions = () => {
                   <p className="text-slate-500 font-bold">yspfuelplus@gmail.com</p>
                 </div>
               </div>
-              <button className="bg-[#007BC9] text-white px-8 py-3 rounded-xl font-black shadow-lg hover:scale-105 transition-all">
+              <button className="bg-lochmara text-white px-8 py-3 rounded-xl font-black shadow-lg hover:bg-vibrant-orange hover:shadow-orange-200 transition-all">
                 Contact Legal
               </button>
             </section>
@@ -112,7 +112,7 @@ const TermsConditions = () => {
         <div className="mt-12 text-center">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-[#007BC9] font-bold text-sm transition-all hover:gap-4"
+            className="inline-flex items-center gap-2 text-slate-400 hover:text-vibrant-orange font-bold text-sm transition-all hover:gap-4"
           >
             <ArrowRight size={16} className="rotate-180" /> Return to Home
           </Link>

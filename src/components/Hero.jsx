@@ -23,7 +23,7 @@ export default function Hero() {
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight">
               Smart Fuel Loyalty & <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#007BC9] to-[#006BB0]">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-lochmara to-vibrant-orange">
                 Internal Management
               </span>
             </h1>
@@ -33,7 +33,7 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <button className="w-full sm:w-auto bg-gradient-to-r from-[#007BC9] to-[#006BB0] text-white px-10 py-5 rounded-2xl font-black shadow-2xl shadow-blue-200 hover:shadow-blue-300 transition-all active:scale-95 flex items-center justify-center gap-2 text-lg">
+              <button className="w-full sm:w-auto bg-vibrant-orange text-white px-10 py-5 rounded-2xl font-black shadow-2xl shadow-orange-200 hover:shadow-orange-300 transition-all active:scale-95 flex items-center justify-center gap-2 text-lg">
                 Get Started
                 <ArrowRight size={20} />
               </button>
@@ -50,7 +50,7 @@ export default function Hero() {
                 "Global Insight Dashboard"
               ].map((text, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-slate-500 font-bold text-sm">
-                  <CheckCircle2 size={18} className="text-emerald-500" />
+                <CheckCircle2 size={18} className="text-golden-yellow" />
                   {text}
                 </div>
               ))}

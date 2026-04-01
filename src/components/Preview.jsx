@@ -7,8 +7,8 @@ export default function Preview() {
     <section className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 mb-6 tracking-tight">
-            User Interface <span className="text-[#007BC9]">Preview</span>
+          <h2 className="text-3xl sm:text-5xl font-black text-deep-blue mb-6 tracking-tight">
+            User Interface <span className="text-lochmara">Preview</span>
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto font-medium">
             Take a look at our clean and intuitive interfaces designed for maximum efficiency.
@@ -26,7 +26,7 @@ export default function Preview() {
               />
             </div>
             <div className="px-6">
-              <h3 className="text-2xl font-black text-slate-900 mb-2">Powerful Admin Panel</h3>
+              <h3 className="text-2xl font-black text-deep-blue mb-2">Powerful Admin Panel</h3>
               <p className="text-slate-500 font-medium leading-relaxed">
                 A comprehensive view of all your pump's metrics, transactions, and user management in one powerful dashboard.
               </p>
@@ -45,7 +45,7 @@ export default function Preview() {
               </div>
             </div>
             <div className="px-6 text-center lg:text-left">
-              <h3 className="text-2xl font-black text-slate-900 mb-2">Intuitive Mobile Experience</h3>
+              <h3 className="text-2xl font-black text-deep-blue mb-2">Intuitive Mobile Experience</h3>
               <p className="text-slate-500 font-medium leading-relaxed">
                 Whether you're a manager, staff member, or customer, our mobile apps provide a fast and seamless QR-based transaction experience.
               </p>

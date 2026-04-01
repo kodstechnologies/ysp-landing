@@ -35,9 +35,9 @@ export default function Navbar() {
             <div className="bg-gradient-to-br from-[#007BC9] to-[#006BB0] p-2 rounded-xl shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform duration-300">
               <Fuel className="text-white" size={24} />
             </div>
-            <span className="text-xl md:text-2xl font-black tracking-tighter text-slate-900">
-              YSP<span className="text-[#007BC9]">FUEL</span>
-              <span className="text-slate-400 font-medium">PLUS</span>
+            <span className="text-xl md:text-2xl font-black tracking-tighter text-deep-blue">
+              YSP<span className="text-lochmara">FUEL</span>
+              <span className="text-vibrant-orange">PLUS</span>
             </span>
           </Link>
 
@@ -57,7 +57,7 @@ export default function Navbar() {
             </button>
             <button
               onClick={() => scrollToSection("products")}
-              className="hover:text-[#007BC9] transition-colors"
+              className="hover:text-vibrant-orange transition-colors"
             >
               Products
             </button>
@@ -68,7 +68,7 @@ export default function Navbar() {
               Pricing
             </button> */}
 
-            <button className="bg-gradient-to-r from-[#007BC9] to-[#006BB0] text-white px-8 py-3 rounded-full hover:shadow-xl hover:shadow-blue-200 transition-all duration-300 active:scale-95 shadow-lg shadow-blue-100 flex items-center gap-2">
+            <button className="bg-vibrant-orange text-white px-8 py-3 rounded-full hover:shadow-xl hover:shadow-orange-200 transition-all duration-300 active:scale-95 shadow-lg shadow-orange-100 flex items-center gap-2">
               Get Started
             </button>
           </div>
@@ -106,7 +106,7 @@ export default function Navbar() {
           ))}
           
           <div className="pt-4 border-t border-slate-100 mt-4 px-2">
-            <button className="w-full bg-gradient-to-r from-[#007BC9] to-[#006BB0] text-white py-5 rounded-2xl font-black shadow-xl shadow-blue-100 active:scale-95 transition-transform">
+            <button className="w-full bg-vibrant-orange text-white py-5 rounded-2xl font-black shadow-xl shadow-orange-100 active:scale-95 transition-transform">
               Request Demo
             </button>
           </div>

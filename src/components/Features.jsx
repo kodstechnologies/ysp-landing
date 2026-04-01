@@ -51,10 +51,18 @@ export default function Features() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((f, i) => (
             <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-slate-100 hover:shadow-2xl transition-all duration-300 group">
-              <div className={`${f.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}>
-                {f.icon}
+              <div className={`${
+                i === 0 ? "bg-lochmara/10" : 
+                i === 1 ? "bg-vibrant-orange/10" : 
+                i === 2 ? "bg-golden-yellow/10" : 
+                i === 3 ? "bg-lochmara/10" : 
+                i === 4 ? "bg-vibrant-orange/10" : "bg-golden-yellow/10"
+              } w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}>
+                {React.cloneElement(f.icon, { 
+                  className: i % 3 === 0 ? "text-lochmara" : i % 3 === 1 ? "text-vibrant-orange" : "text-amber-500" 
+                })}
               </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">{f.title}</h3>
+              <h3 className="text-2xl font-black text-deep-blue mb-4 tracking-tight">{f.title}</h3>
               <p className="text-slate-500 font-medium leading-relaxed">{f.desc}</p>
             </div>
           ))}

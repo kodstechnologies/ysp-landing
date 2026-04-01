@@ -22,10 +22,10 @@ const PrivacyPolicy = () => {
     <div className="pb-20 px-4 pt-10">
       <div className="max-w-4xl mx-auto bg-white rounded-[3rem] shadow-2xl border border-slate-200 overflow-hidden">
         {/* Header Banner */}
-        <div className="bg-[#007BC9] px-8 py-12 text-white relative overflow-hidden">
+        <div className="bg-lochmara px-8 py-12 text-white relative overflow-hidden">
           <div className="relative z-10 space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/20 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-widest leading-none">
-              <ShieldCheck size={14} /> Trust & Safety
+              <ShieldCheck size={14} className="text-golden-yellow" /> Trust & Safety
             </div>
             <h1 className="text-4xl md:text-6xl font-black italic tracking-tight">
               Privacy Policy
@@ -56,10 +56,10 @@ const PrivacyPolicy = () => {
           {/* 2. Information We Collect */}
           <section className="space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
-              <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-[#007BC9]">
+              <div className="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center text-vibrant-orange">
                 <Database size={20} />
               </div>
-              <h2 className="text-2xl font-black italic uppercase tracking-tighter text-[#007BC9]">
+              <h2 className="text-2xl font-black italic uppercase tracking-tighter text-deep-blue border-l-4 border-vibrant-orange pl-3">
                 2. Information We Collect
               </h2>
             </div>
@@ -143,7 +143,7 @@ const PrivacyPolicy = () => {
       <div className="mt-12 text-center">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-slate-400 hover:text-[#007BC9] font-bold text-sm transition-all hover:gap-4"
+          className="inline-flex items-center gap-2 text-slate-400 hover:text-vibrant-orange font-bold text-sm transition-all hover:gap-4"
         >
           <FileText size={16} /> Return to Home Platform
         </Link>
