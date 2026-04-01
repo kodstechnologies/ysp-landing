@@ -1,7 +1,8 @@
 import React from "react";
 import { ArrowRight, Play, CheckCircle2, QrCode } from "lucide-react";
-import dashboardPreview from "../assets/dashboard-preview.png";
+import adminPanel from "../assets/admin panel.jpg";
 import mobilePreview from "../assets/mobile-preview.png";
+import managerdashboard from "../assets/manager dashboard.jpeg";
 
 export default function Hero() {
   return (
@@ -60,9 +61,9 @@ export default function Hero() {
           {/* Right Visuals */}
           <div className="relative">
             {/* Dashboard Preview Wrapper */}
-            <div className="relative z-20 transform lg:translate-x-12 lg:scale-110 shadow-2xl rounded-3xl overflow-hidden border-8 border-slate-100 bg-white">
+            <div className="relative z-20 transform lg:translate-x-2 lg:translate-y-6 lg:scale-115 shadow-2xl rounded-3xl overflow-hidden border-8 border-slate-100 bg-white transition-all duration-700 hover:scale-[1.18] hover:rotate-1">
               <img 
-                src={dashboardPreview} 
+                src={adminPanel} 
                 alt="YSP Fuel Plus Dashboard" 
                 className="w-full h-auto"
               />
@@ -72,7 +73,7 @@ export default function Hero() {
             <div className="absolute -bottom-10 -left-10 z-30 w-1/3 min-w-[200px] transform -rotate-6 hidden md:block">
                <div className="relative shadow-[20px_20px_50px_rgba(0,0,0,0.3)] rounded-[2.5rem] border-[6px] border-slate-900 overflow-hidden bg-slate-900">
                   <img 
-                    src={mobilePreview} 
+                    src={managerdashboard} 
                     alt="Mobile App" 
                     className="w-full h-auto"
                   />

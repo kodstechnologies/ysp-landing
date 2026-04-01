@@ -1,6 +1,7 @@
 import React from "react";
-import dashboardPreview from "../assets/dashboard-preview.png";
+import adminPanel from "../assets/admin panel.jpg";
 import mobilePreview from "../assets/mobile-preview.png";
+import managerdashboard from "../assets/manager dashboard.jpeg";
 
 export default function Preview() {
   return (
@@ -20,7 +21,7 @@ export default function Preview() {
           <div className="space-y-6">
             <div className="bg-slate-50 p-4 rounded-[2.5rem] border border-slate-100 shadow-2xl">
               <img 
-                src={dashboardPreview} 
+                src={adminPanel} 
                 alt="Admin Dashboard Preview" 
                 className="w-full h-auto rounded-3xl shadow-sm border border-slate-200"
               />
