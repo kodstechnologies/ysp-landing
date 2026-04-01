@@ -1,101 +1,90 @@
-// Path: src/components/Hero.jsx
-/**
- * Hero Component - Main Landing Section
- *
- * This is the primary hero section that appears at the top of the homepage.
- * It serves as the main value proposition and call-to-action area.
- *
- * Features:
- * - Eye-catching headline about finding jobs and hiring talent
- * - Description of the platform's target audience (ITI, diploma, skilled workers)
- * - Prominent Google Play Store download button
- * - Responsive design that works on mobile and desktop
- * - Smooth animations and hover effects
- */
-
 import React from "react";
-import { Play } from "lucide-react";
-
-// Import the app preview mockup image
-import previewImage from "../assets/preview.jpeg";
+import { ArrowRight, Play, CheckCircle2, QrCode } from "lucide-react";
+import dashboardPreview from "../assets/dashboard-preview.png";
+import mobilePreview from "../assets/mobile-preview.png";
 
 export default function Hero() {
-    return (
-        <section className="pt-12 pb-14 px-6 max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10">
-            {/* Text Content Section - Contains headline, description, and CTA */}
-            <div className="flex-1 text-center lg:text-left">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight mb-4">
-                    Find Genuine Jobs <br />
-                    <span className="text-blue-600">Hire Verified Talent</span>
-                </h1>
+  return (
+    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[120px] opacity-60"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[120px] opacity-60"></div>
+      </div>
 
-                <p className="text-sm sm:text-base text-slate-600 mb-7 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                    Designed for ITI, diploma, and skilled non-degree workers. Secure,
-                    simple, and transparent hiring through our mobile app.
-                </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Content */}
+          <div className="text-center lg:text-left space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-[#007BC9] font-bold text-sm animate-fade-in">
+              <QrCode size={16} />
+              <span>The Future of Fuel Loyalty</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight">
+              Smart Fuel Loyalty & <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#007BC9] to-[#006BB0]">
+                Internal Management
+              </span>
+            </h1>
 
-                {/* Google Play Store Download Button */}
-                <div className="flex justify-center lg:justify-start">
-                    <button
-                        onClick={() =>
-                            window.open("https://play.google.com/store", "_blank")
-                        }
-                        className="
-                                    flex items-center gap-3
-                                    px-4 py-2.5
-    rounded-xl 
-    bg-black text-white
-    shadow-md
-    hover:shadow-lg
-    hover:-translate-y-0.5
-    active:translate-y-0
-    transition-all duration-200
-  "
-                    >
-                        {/* Google Play Icon */}
-                        <div className="flex items-center justify-center w-9 h-9">
-                            <Play className="w-6 h-6 text-white" fill="white" />
-                        </div>
+            <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+              A comprehensive <strong>Internal Management System</strong> for your station staff, seamlessly integrated with a powerful <strong>Public Loyalty App</strong> for your customers.
+            </p>
 
-                        {/* Text */}
-                        <div className="text-left leading-tight">
-                            <p className="text-[10px] uppercase tracking-wider text-gray-300">
-                                Get it on
-                            </p>
-                            <p className="text-base font-semibold tracking-tight">
-                                Google Play
-                            </p>
-                        </div>
-                    </button>
-                </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <button className="w-full sm:w-auto bg-gradient-to-r from-[#007BC9] to-[#006BB0] text-white px-10 py-5 rounded-2xl font-black shadow-2xl shadow-blue-200 hover:shadow-blue-300 transition-all active:scale-95 flex items-center justify-center gap-2 text-lg">
+                Get Started
+                <ArrowRight size={20} />
+              </button>
+              <button className="w-full sm:w-auto bg-white border-2 border-slate-200 text-slate-700 px-10 py-5 rounded-2xl font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-2 text-lg">
+                <Play size={20} className="text-[#007BC9] fill-[#007BC9]" />
+                Request Demo
+              </button>
             </div>
 
-            {/* App Mockup */}
-            <div className="flex-1 flex justify-center">
-                <div
-                    className="w-48 h-[400px] bg-slate-900 rounded-[2rem]
-                                border-[6px] border-slate-900 shadow-2xl
-                                overflow-hidden relative"
-                >
-                    {/* Notch */}
-                    <div
-                        className="absolute top-2 left-1/2 -translate-x-1/2
-                                    w-16 h-2.5 bg-slate-900 rounded-full z-10"
-                    />
-
-                    {/* Screen with App Preview Image */}
-                    <div
-                        className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-800
-                                    flex items-center justify-center overflow-hidden"
-                    >
-                        <img
-                            src={previewImage}
-                            alt="Shramik jobing solutions App Preview"
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
+            <div className="pt-8 flex flex-wrap justify-center lg:justify-start gap-6">
+              {[
+                "Internal Control Suite",
+                "Public Rewards App",
+                "Global Insight Dashboard"
+              ].map((text, idx) => (
+                <div key={idx} className="flex items-center gap-2 text-slate-500 font-bold text-sm">
+                  <CheckCircle2 size={18} className="text-emerald-500" />
+                  {text}
                 </div>
+              ))}
             </div>
-        </section>
-    );
+          </div>
+
+          {/* Right Visuals */}
+          <div className="relative">
+            {/* Dashboard Preview Wrapper */}
+            <div className="relative z-20 transform lg:translate-x-12 lg:scale-110 shadow-2xl rounded-3xl overflow-hidden border-8 border-slate-100 bg-white">
+              <img 
+                src={dashboardPreview} 
+                alt="YSP Fuel Plus Dashboard" 
+                className="w-full h-auto"
+              />
+            </div>
+
+            {/* Mobile Mockup Overlay */}
+            <div className="absolute -bottom-10 -left-10 z-30 w-1/3 min-w-[200px] transform -rotate-6 hidden md:block">
+               <div className="relative shadow-[20px_20px_50px_rgba(0,0,0,0.3)] rounded-[2.5rem] border-[6px] border-slate-900 overflow-hidden bg-slate-900">
+                  <img 
+                    src={mobilePreview} 
+                    alt="Mobile App" 
+                    className="w-full h-auto"
+                  />
+               </div>
+            </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+            <div className="absolute bottom-20 -left-20 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

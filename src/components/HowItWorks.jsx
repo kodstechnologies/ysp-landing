@@ -1,64 +1,67 @@
-// Path: src/components/HowItWorks.jsx
-/**
- * HowItWorks Component - Step-by-Step User Journey
- *
- * This component explains the complete process of using the Shramik platform
- * in 6 clear, numbered steps. It shows both job seekers and recruiters how
- * the platform works from registration to successful hiring.
- *
- * Steps Covered:
- * 1. User registration with mobile OTP verification
- * 2. Profile completion and document upload
- * 3. Secure coin purchase via Razorpay
- * 4. Job application/shortlisting using coins
- * 5. Secure messaging after shortlisting
- * 6. Successful hiring completion
- *
- * Features:
- * - Responsive grid layout (1-3 columns based on screen size)
- * - Numbered steps with visual indicators
- * - Hover effects for better interactivity
- * - Clean, easy-to-follow design
- */
-
 import React from 'react';
+import { UserPlus, Scan, Droplets, Gift, ArrowDown } from 'lucide-react';
 
-/**
- * HowItWorks Component
- * Uses a responsive grid to show the step-by-step user journey.
- */
 export default function HowItWorks() {
-    // Array defining the 6 steps of the Shramik platform process
     const steps = [
-        { id: 1, text: "Register using mobile number and OTP " },
-        { id: 2, text: "Complete profile and upload required documents " },
-        { id: 3, text: "Purchase coins securely through Razorpay " },
-        { id: 4, text: "Apply for jobs or shortlist candidates using coins " },
-        { id: 5, text: "Chat securely after shortlisting " },
-        { id: 6, text: "Complete hiring faster and with confidence " }
+        {
+            title: "Customer Registration",
+            desc: "Customers register on the platform and get a unique QR code for their vehicle.",
+            icon: <UserPlus className="w-8 h-8 text-white" />,
+            color: "bg-blue-600",
+            role: "Customer Action"
+        },
+        {
+            title: "Scan & Fuel",
+            desc: "Staff scans the QR code and enters the fuel volume in liters during the transaction.",
+            icon: <Scan className="w-8 h-8 text-white" />,
+            color: "bg-[#007BC9]",
+            role: "Staff Action"
+        },
+        {
+            title: "Automatic Credit",
+            desc: "Fuel points are automatically calculated and credited to the customer's wallet instantly.",
+            icon: <Droplets className="w-8 h-8 text-white" />,
+            color: "bg-emerald-600",
+            role: "System Action"
+        },
+        {
+            title: "Redeem Rewards",
+            desc: "Customers can redeem their accumulated points for fuel or other exciting rewards at any YSP pump.",
+            icon: <Gift className="w-8 h-8 text-white" />,
+            color: "bg-orange-500",
+            role: "Customer Action"
+        }
     ];
 
     return (
-        <section id="how-it-works" className="py-16 sm:py-12 bg-white px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-                {/* Section Header */}
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">How Shramik jobing solutions Works </h2>
-                    <p className="mt-4 text-slate-600">A simple, secure path from registration to hiring.</p>
+        <section id="how-it-works" className="py-24 bg-white relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="text-center mb-20">
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-[#007BC9] font-black text-xs uppercase tracking-widest mb-4">
+                        Simple Process
+                    </div>
+                    <h2 className="text-3xl sm:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+                        How It <span className="text-[#007BC9]">Works</span>
+                    </h2>
+                    <p className="text-slate-600 text-lg max-w-2xl mx-auto font-medium">
+                        Four simple steps to a smarter and more rewarding fueling experience for your customers.
+                    </p>
                 </div>
 
-                {/* Steps Grid - Responsive layout showing the process */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                    {steps.map((step) => (
-                        <div key={step.id} className="relative p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-md transition">
-                            <span className="absolute top-4 right-6 text-5xl font-black text-blue-100/50 select-none">
-                                0{step.id}
-                            </span>
-                            <div className="relative z-10 pt-4">
-                                <p className="text-lg font-bold text-slate-800 leading-snug">
-                                    {step.text}
-                                </p>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                    <div className="hidden md:block absolute top-[40px] left-[10%] right-[10%] h-1 bg-slate-100 -z-10"></div>
+                    {steps.map((step, index) => (
+                        <div key={index} className="flex flex-col items-center text-center group">
+                            <div className={`${step.color} w-20 h-20 rounded-3xl flex items-center justify-center mb-8 shadow-xl shadow-blue-200 group-hover:scale-110 transition-transform duration-300 relative z-20`}>
+                                {step.icon}
+                                <div className="absolute -top-3 -right-3 w-8 h-8 bg-slate-900 text-white rounded-full flex items-center justify-center font-black text-xs">
+                                    {index + 1}
+                                </div>
                             </div>
+                            <span className="text-[10px] font-black text-[#007BC9] uppercase tracking-widest mb-2 block">{step.role}</span>
+                            <h3 className="text-xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-[#007BC9] transition-colors">{step.title}</h3>
+                            <p className="text-slate-500 text-sm font-medium leading-relaxed max-w-[200px]">{step.desc}</p>
+                            {index < steps.length - 1 && <div className="md:hidden my-6"><ArrowDown className="text-slate-300" /></div>}
                         </div>
                     ))}
                 </div>

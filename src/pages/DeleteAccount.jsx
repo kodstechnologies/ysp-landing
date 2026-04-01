@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import { Trash2, AlertTriangle } from "lucide-react";
+import { Trash2, AlertTriangle, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const DeleteAccount = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -12,127 +11,107 @@ const DeleteAccount = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // DEMO API FUNCTION
   const handleDeleteRequest = async (e) => {
     e.preventDefault();
     if (!isConfirmed) return;
-
     setIsLoading(true);
 
-    // --- FUTURE API COMMIT BLOCK ---
-    // This is where you connect to your backend in the future.
-    // const response = await fetch('https://api.jstcliq.com/v1/delete', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ phone: phoneNumber })
-    // });
-    // --- END API BLOCK ---
-
     setTimeout(() => {
-      alert(`Demo: Verification code sent to ${phoneNumber}`);
+      alert(`Verification code sent to ${phoneNumber}. Please check your SMS to complete deletion.`);
       setIsLoading(false);
     }, 1500);
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
-      <Navbar />
+    <div className="pb-20 px-4 pt-10">
+      <div className="max-w-xl mx-auto bg-white rounded-[3rem] shadow-2xl border border-slate-200 overflow-hidden">
+        {/* Header Section */}
+        <div className="bg-red-50 p-10 text-center border-b border-red-100">
+          <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-red-200/50 text-red-600">
+            <Trash2 size={40} />
+          </div>
+          <h2 className="text-3xl font-black text-red-800 tracking-tight">
+            Delete Account
+          </h2>
+          <p className="text-red-500 font-bold mt-2">
+            We're sorry to see you leave YSP Fuel Plus
+          </p>
+        </div>
 
-      <main className="flex-grow pt-20 md:pt-16 pb-20 px-4">
-        <div className="max-w-xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
-          {/* Header Section */}
-          <div className="bg-red-50/50 p-6 md:p-10 text-center border-b border-red-100/50">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm text-red-600">
-              <Trash2 size={32} />
+        <div className="p-8 md:p-12 space-y-10">
+          {/* Warning Box */}
+          <div className="bg-amber-50 border border-amber-200 rounded-[2rem] p-8">
+            <div className="flex items-center gap-3 text-amber-700 mb-4 font-black uppercase text-sm tracking-widest">
+              <AlertTriangle size={20} /> Critical Warning
             </div>
-            <h2 className="text-2xl font-black text-red-700 tracking-tight">
-              Account Deletion
-            </h2>
-            <p className="text-red-500 font-medium mt-1">
-              We're sorry to see you go
-            </p>
+            <ul className="space-y-3 text-sm text-amber-900/80 font-bold leading-relaxed">
+              <li className="flex gap-2"><span>•</span> This action is permanent and cannot be reversed.</li>
+              <li className="flex gap-2"><span>•</span> All your reward points and transaction history will be lost.</li>
+              <li className="flex gap-2"><span>•</span> You will lose access to all YSP Fuel Plus member benefits.</li>
+            </ul>
           </div>
 
-          <div className="p-6 md:p-10 space-y-6 md:space-y-8">
-            {/* Warning Box */}
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 md:p-6">
-              <div className="flex items-center gap-2 text-amber-700 mb-3 font-bold">
-                <AlertTriangle size={18} /> Before you proceed
-              </div>
-              <ul className="space-y-2 text-sm text-amber-800/80 leading-relaxed font-medium">
-                <li>• Account deletion is permanent and cannot be undone.</li>
-                <li>
-                  • All your data, including service and product records, will
-                  be wiped.
-                </li>
-                <li>
-                  • Please ensure you have backed up any necessary information.
-                </li>
-              </ul>
+          {/* Verification Form */}
+          <form onSubmit={handleDeleteRequest} className="space-y-8">
+            <div>
+              <label className="block text-sm font-black text-slate-800 uppercase tracking-widest mb-3">
+                Registered Phone Number
+              </label>
+              <input
+                type="tel"
+                required
+                placeholder="e.g. +91 9876543210"
+                className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 focus:ring-4 focus:ring-red-100 focus:border-red-500 outline-none transition-all font-bold text-lg"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+              <p className="text-xs text-slate-400 mt-3 font-medium italic">
+                A secure verification code will be sent to this number.
+              </p>
             </div>
 
-            {/* Verification Form */}
-            <form onSubmit={handleDeleteRequest} className="space-y-6">
-              <div>
-                <label className="block text-sm font-bold text-slate-700 mb-2">
-                  Phone Number Verification
-                </label>
-                <input
-                  type="tel"
-                  required
-                  placeholder="Enter your registered phone number"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 md:px-5 py-3 md:py-4 focus:ring-2 focus:ring-red-500/20 focus:border-red-500 outline-none transition-all"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                />
-                <p className="text-[11px] text-slate-400 mt-2">
-                  We'll send a verification code to this number.{" "}
-                </p>
-              </div>
-
+            <div
+              className="flex items-start gap-4 cursor-pointer select-none group p-4 rounded-2xl hover:bg-slate-50 transition-colors"
+              onClick={() => setIsConfirmed(!isConfirmed)}
+            >
               <div
-                className="flex items-start gap-3 cursor-pointer select-none group"
-                onClick={() => setIsConfirmed(!isConfirmed)}
-              >
-                <div
-                  className={`mt-0.5 w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${
-                    isConfirmed
-                      ? "bg-red-500 border-red-500 shadow-md shadow-red-100"
-                      : "border-slate-300 bg-white group-hover:border-red-400"
-                  }`}
-                >
-                  {isConfirmed && (
-                    <div className="w-2 h-2 bg-white rounded-full" />
-                  )}
-                </div>
-                <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                  I understand that this action is irreversible and I confirm I
-                  want to permanently delete my account.
-                </p>
-              </div>
-
-              {/* Red Action Button (Enabled only when confirmed) */}
-              <button
-                type="submit"
-                disabled={!isConfirmed || isLoading}
-                className={`w-full py-4 rounded-xl font-bold transition-all ${
-                  isConfirmed && !isLoading
-                    ? "bg-red-600 text-white shadow-lg shadow-red-200 hover:bg-red-700 active:scale-95"
-                    : "bg-slate-100 text-slate-400 cursor-not-allowed"
+                className={`mt-1 w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all ${
+                  isConfirmed
+                    ? "bg-red-600 border-red-600 shadow-lg shadow-red-200"
+                    : "border-slate-300 bg-white group-hover:border-red-400"
                 }`}
               >
-                {isLoading ? "Processing..." : "Delete My Account"}
-              </button>
-            </form>
-          </div>
+                {isConfirmed && (
+                  <div className="w-2.5 h-2.5 bg-white rounded-sm" />
+                )}
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed font-bold">
+                I confirm that I want to permanently delete my YSP Fuel Plus account and all associated data.
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              disabled={!isConfirmed || isLoading}
+              className={`w-full py-5 rounded-2xl font-black text-lg transition-all ${
+                isConfirmed && !isLoading
+                  ? "bg-red-600 text-white shadow-2xl shadow-red-200 hover:bg-red-700 active:scale-95"
+                  : "bg-slate-100 text-slate-400 cursor-not-allowed"
+              }`}
+            >
+              {isLoading ? "Processing Request..." : "Permanently Delete Account"}
+            </button>
+          </form>
         </div>
-        <p className="text-center mt-8 text-sm text-slate-400 font-medium">
-          Changed your mind?{" "}
-          <a href="/" className="text-blue-600 font-bold hover:underline">
-            Back to Home
-          </a>
-        </p>
-      </main>
+      </div>
+      <div className="mt-12 text-center">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-600 font-bold text-sm transition-all hover:gap-4"
+        >
+          <ArrowRight size={16} className="rotate-180" /> Changed your mind? Back to Home
+        </Link>
+      </div>
     </div>
   );
 };

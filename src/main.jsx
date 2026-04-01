@@ -1,5 +1,5 @@
 /**
- * Main Entry Point for Shramik Web Application
+ * Main Entry Point for YSP Fuel Plus Web Application
  *
  * This file serves as the root of our React application. It:
  * - Imports necessary React functions for rendering
