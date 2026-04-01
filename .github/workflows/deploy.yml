@@ -27,17 +27,15 @@ jobs:
       - name: Test SSH connectivity
         run: nc -vz ${{ secrets.EC2_HOST }} 22
 
-      - name: Clean & prepare target directory
+      - name: Prepare target directory
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            sudo rm -rf /var/www/ysp-landing/*
-            sudo mkdir -p /var/www/ysp-landing
-            sudo chown -R ${{ secrets.EC2_USER }}:${{ secrets.EC2_USER }} /var/www/ysp-landing
-            sudo chmod -R 755 /var/www/ysp-landing
+            mkdir -p /home/ubuntu/ysp-landing/dist
+            rm -rf /home/ubuntu/ysp-landing/dist/*
 
       - name: Deploy build to EC2
         uses: appleboy/scp-action@v0.1.7
@@ -46,10 +44,9 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           source: "dist/*"
-          target: "/var/www/ysp-landing"
+          target: "/home/ubuntu/ysp-landing/dist"
           port: 22
           overwrite: true
-          timeout: 60s
 
       - name: Fix permissions & reload Nginx
         uses: appleboy/ssh-action@v1.0.3
@@ -58,9 +55,11 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            sudo chown -R www-data:www-data /var/www/ysp-landing
-            sudo chmod -R 755 /var/www/ysp-landing
-            sudo systemctl reload nginx
+            sudo chmod o+x /home
+            sudo chmod o+x /home/ubuntu
+            sudo chmod -R o+rx /home/ubuntu/ysp-landing
+            sudo chown -R www-data:www-data /home/ubuntu/ysp-landing
+            sudo systemctl restart nginx
 
       - name: Deployment Complete
         run: echo "YSP Landing Page deployed successfully!"
