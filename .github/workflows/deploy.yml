@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code
+      # 1. Checkout
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
 
       # 3. Install dependencies
       - name: Install dependencies
@@ -28,48 +28,61 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # 5. Test SSH connection
-      - name: Test SSH connectivity
-        run: nc -vz ${{ secrets.EC2_HOST }} 22
+      # 5. Verify build (IMPORTANT)
+      - name: Verify build output
+        run: |
+          ls -la dist
+          test -f dist/index.html
 
-      # 6. Prepare server (clean old build safely)
-      - name: Prepare target directory
+      # 6. Deploy to EC2 (single SSH step - BEST PRACTICE)
+      - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            sudo mkdir -p /home/ubuntu/ysp-landing/dist
-            sudo rm -rf /home/ubuntu/ysp-landing/dist/*
-            sudo chown -R $USER:$USER /home/ubuntu/ysp-landing/dist
+            # Create temp folder
+            mkdir -p /home/ubuntu/tmp-deploy
 
-      # 7. Upload new build
-      - name: Deploy build to EC2
+      # 7. Copy files to temp folder
+      - name: Upload files
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           source: "dist/*"
-          target: "/home/ubuntu/ysp-landing/dist"
-          port: 22
+          target: "/home/ubuntu/tmp-deploy"
           overwrite: true
 
-      # 8. Fix permissions for Nginx & restart
-      - name: Fix permissions & restart Nginx
+      # 8. Move files safely (ZERO ERROR STEP)
+      - name: Finalize deployment
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
+            # Clean old build safely
+            sudo rm -rf /home/ubuntu/ysp-landing/dist
+            mkdir -p /home/ubuntu/ysp-landing/dist
+
+            # Move new build
+            mv /home/ubuntu/tmp-deploy/dist/* /home/ubuntu/ysp-landing/dist/
+
+            # Remove temp
+            rm -rf /home/ubuntu/tmp-deploy
+
+            # Fix permissions (CRITICAL)
+            sudo chown -R www-data:www-data /home/ubuntu/ysp-landing
+            sudo chmod -R 755 /home/ubuntu/ysp-landing
             sudo chmod o+x /home
             sudo chmod o+x /home/ubuntu
-            sudo chmod -R o+rx /home/ubuntu/ysp-landing
-            sudo chown -R www-data:www-data /home/ubuntu/ysp-landing
+
+            # Restart nginx
             sudo systemctl restart nginx
 
       # 9. Done
       - name: Deployment Complete
-        run: echo "YSP Landing Page deployed successfully 🚀"
+        run: echo "✅ Deployment successful!"
