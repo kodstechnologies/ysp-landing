@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout
+      # 1. Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Setup Node
+      # 2. Setup Node (FIXED VERSION)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       # 3. Install dependencies
       - name: Install dependencies
@@ -28,53 +28,37 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # 5. Verify build (IMPORTANT)
-      - name: Verify build output
+      # 5. Verify build output (safety check)
+      - name: Verify build
         run: |
           ls -la dist
           test -f dist/index.html
 
-      # 6. Deploy to EC2 (single SSH step - BEST PRACTICE)
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
-          script: |
-            # Create temp folder
-            mkdir -p /home/ubuntu/tmp-deploy
-
-      # 7. Copy files to temp folder
-      - name: Upload files
+      # 6. Upload build to EC2 (CORRECT STRUCTURE)
+      - name: Upload build to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          source: "dist/*"
-          target: "/home/ubuntu/tmp-deploy"
-          overwrite: true
+          source: "dist"
+          target: "/home/ubuntu/"
 
-      # 8. Move files safely (ZERO ERROR STEP)
-      - name: Finalize deployment
+      # 7. Deploy on EC2 (CLEAN + SAFE)
+      - name: Deploy on EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            # Clean old build safely
+            # Remove old build
             sudo rm -rf /home/ubuntu/ysp-landing/dist
-            mkdir -p /home/ubuntu/ysp-landing/dist
 
             # Move new build
-            mv /home/ubuntu/tmp-deploy/dist/* /home/ubuntu/ysp-landing/dist/
+            mv /home/ubuntu/dist /home/ubuntu/ysp-landing/
 
-            # Remove temp
-            rm -rf /home/ubuntu/tmp-deploy
-
-            # Fix permissions (CRITICAL)
+            # Fix permissions
             sudo chown -R www-data:www-data /home/ubuntu/ysp-landing
             sudo chmod -R 755 /home/ubuntu/ysp-landing
             sudo chmod o+x /home
@@ -83,6 +67,6 @@ jobs:
             # Restart nginx
             sudo systemctl restart nginx
 
-      # 9. Done
+      # 8. Done
       - name: Deployment Complete
         run: echo "✅ Deployment successful!"
