@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowRight, Gift, Smartphone } from "lucide-react";
 import { HashLink } from "react-router-hash-link";
 
 export default function CTA() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup(false);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [showPopup]);
+
   return (
     <section className="py-24 bg-deep-blue relative overflow-hidden">
+      {/* Launch Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center px-4 pointer-events-none">
+          <div className="bg-white text-deep-blue px-8 py-6 rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.5)] border border-white/10 flex flex-col items-center gap-4 animate-splash-fade-in pointer-events-auto">
+            <div className="w-12 h-12 bg-vibrant-orange rounded-full flex items-center justify-center">
+              <Smartphone className="text-white" size={24} />
+            </div>
+            <div className="text-center">
+              <p className="text-lg font-black tracking-tight">The app will launch soon on Google play store.</p>
+              <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-xs mt-1">Thank you</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Decorative Gradients */}
       <div className="absolute inset-0 bg-gradient-to-br from-deep-blue to-lochmara"></div>
       <div className="absolute top-0 right-0 w-[50%] h-full bg-white/10 -skew-x-12 transform translate-x-32"></div>
@@ -24,7 +50,10 @@ export default function CTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <button className="group w-full sm:w-auto bg-vibrant-orange text-white px-12 py-5 rounded-3xl font-black shadow-2xl hover:shadow-orange-900/40 hover:-translate-y-1 transition-all text-xl flex items-center justify-center gap-3">
+          <button 
+            onClick={() => setShowPopup(true)}
+            className="group w-full sm:w-auto bg-vibrant-orange text-white px-12 py-5 rounded-3xl font-black shadow-2xl hover:shadow-orange-900/40 hover:-translate-y-1 transition-all text-xl flex items-center justify-center gap-3"
+          >
             <Smartphone size={24} />
             Download App <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
