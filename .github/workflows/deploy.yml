@@ -41,6 +41,9 @@ jobs:
             echo "📁 Checking dist folder..."
             ls -lt dist
 
+            echo "🔄 Fix permissions..."
+            sudo chown -R www-data:www-data /home/ubuntu/ysp-landing
+
             echo "🔄 Reloading Nginx..."
             sudo systemctl reload nginx
 
