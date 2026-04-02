@@ -42,7 +42,7 @@ jobs:
             ls -lt dist
 
             echo "🔄 Fix permissions..."
-            sudo chown -R www-data:www-data /home/ubuntu/ysp-landing
+            sudo chown -R www-data:www-data /home/ubuntu/ysp-landing/dist
 
             echo "🔄 Reloading Nginx..."
             sudo systemctl reload nginx
