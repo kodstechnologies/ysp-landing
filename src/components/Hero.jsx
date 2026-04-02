@@ -1,12 +1,38 @@
-import React from "react";
-import { ArrowRight, Play, CheckCircle2, QrCode } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { ArrowRight, Play, CheckCircle2, QrCode, Smartphone } from "lucide-react";
 import adminPanel from "../assets/admin-panel.jpg";
 import mobilePreview from "../assets/mobile-preview.png";
 import managerdashboard from "../assets/manager-dashboard.jpeg";
 
 export default function Hero() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup(false);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [showPopup]);
+
   return (
     <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-white">
+      {/* Launch Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center px-4 pointer-events-none">
+          <div className="bg-deep-blue text-white px-8 py-6 rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.5)] border border-white/10 flex flex-col items-center gap-4 animate-splash-fade-in pointer-events-auto">
+            <div className="w-12 h-12 bg-vibrant-orange rounded-full flex items-center justify-center">
+              <Smartphone className="text-white" size={24} />
+            </div>
+            <div className="text-center">
+              <p className="text-lg font-black tracking-tight">The app will launch soon on Google play store.</p>
+              <p className="text-white/60 font-bold uppercase tracking-[0.2em] text-xs mt-1">Thank you</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[120px] opacity-60"></div>
@@ -21,7 +47,7 @@ export default function Hero() {
               <QrCode size={16} />
               <span>The Future of Fuel Loyalty</span>
             </div>
-            
+
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight">
               Smart Fuel Loyalty & <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-lochmara to-vibrant-orange">
@@ -34,7 +60,10 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <button className="w-full sm:w-auto bg-vibrant-orange text-white px-10 py-5 rounded-2xl font-black shadow-2xl shadow-orange-200 hover:shadow-orange-300 transition-all active:scale-95 flex items-center justify-center gap-2 text-lg">
+              <button 
+                onClick={() => setShowPopup(true)}
+                className="w-full sm:w-auto bg-vibrant-orange text-white px-10 py-5 rounded-2xl font-black shadow-2xl shadow-orange-200 hover:shadow-orange-300 transition-all active:scale-95 flex items-center justify-center gap-2 text-lg"
+              >
                 Get Started
                 <ArrowRight size={20} />
               </button>
@@ -51,7 +80,7 @@ export default function Hero() {
                 "Global Insight Dashboard"
               ].map((text, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-slate-500 font-bold text-sm">
-                <CheckCircle2 size={18} className="text-golden-yellow" />
+                  <CheckCircle2 size={18} className="text-golden-yellow" />
                   {text}
                 </div>
               ))}
@@ -62,22 +91,22 @@ export default function Hero() {
           <div className="relative">
             {/* Dashboard Preview Wrapper */}
             <div className="relative z-20 transform lg:translate-x-2 lg:translate-y-6 lg:scale-115 shadow-2xl rounded-3xl overflow-hidden border-8 border-slate-100 bg-white transition-all duration-700 hover:scale-[1.18] hover:rotate-1">
-              <img 
-                src={adminPanel} 
-                alt="YSP Fuel Plus Dashboard" 
+              <img
+                src={adminPanel}
+                alt="YSP Fuel Plus Dashboard"
                 className="w-full h-auto"
               />
             </div>
 
             {/* Mobile Mockup Overlay */}
             <div className="absolute -bottom-10 -left-10 z-30 w-1/3 min-w-[200px] transform -rotate-6 hidden md:block">
-               <div className="relative shadow-[20px_20px_50px_rgba(0,0,0,0.3)] rounded-[2.5rem] border-[6px] border-slate-900 overflow-hidden bg-slate-900">
-                  <img 
-                    src={managerdashboard} 
-                    alt="Mobile App" 
-                    className="w-full h-auto"
-                  />
-               </div>
+              <div className="relative shadow-[20px_20px_50px_rgba(0,0,0,0.3)] rounded-[2.5rem] border-[6px] border-slate-900 overflow-hidden bg-slate-900">
+                <img
+                  src={managerdashboard}
+                  alt="Mobile App"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
 
             {/* Decorative Elements */}

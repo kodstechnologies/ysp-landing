@@ -85,9 +85,8 @@ export default function Navbar() {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden absolute w-full bg-white border-b border-slate-200 transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-screen opacity-100 py-6" : "max-h-0 opacity-0 overflow-hidden"
-        }`}
+        className={`md:hidden absolute w-full bg-white border-b border-slate-200 transition-all duration-300 ease-in-out ${isOpen ? "max-h-screen opacity-100 py-6" : "max-h-0 opacity-0 overflow-hidden"
+          }`}
       >
         <div className="px-4 space-y-2">
           {[
@@ -104,7 +103,7 @@ export default function Navbar() {
               {item.label}
             </button>
           ))}
-          
+
           <div className="pt-4 border-t border-slate-100 mt-4 px-2">
             <button className="w-full bg-vibrant-orange text-white py-5 rounded-2xl font-black shadow-xl shadow-orange-100 active:scale-95 transition-transform">
               Request Demo
