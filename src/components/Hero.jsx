@@ -99,7 +99,7 @@ export default function Hero() {
             </div>
 
             {/* Mobile Mockup Overlay */}
-            <div className="absolute -bottom-10 -left-10 z-30 w-1/3 min-w-[200px] transform -rotate-6 hidden md:block">
+            <div className="absolute -bottom-6 -left-4 md:-bottom-10 md:-left-10 z-30 w-[40%] md:w-1/3 min-w-[140px] md:min-w-[200px] transform -rotate-6">
               <div className="relative shadow-[20px_20px_50px_rgba(0,0,0,0.3)] rounded-[2.5rem] border-[6px] border-slate-900 overflow-hidden bg-slate-900">
                 <img
                   src={managerdashboard}
