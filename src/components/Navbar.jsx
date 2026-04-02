@@ -36,7 +36,7 @@ export default function Navbar() {
               <Fuel className="text-white" size={24} />
             </div>
             <span className="text-xl md:text-2xl font-black tracking-tighter text-deep-blue">
-              YSP<span className="text-lochmara">FUEL</span>
+              YSP<span className="text-lochmara">FUELL</span>
               <span className="text-vibrant-orange">PLUS</span>
             </span>
           </Link>
