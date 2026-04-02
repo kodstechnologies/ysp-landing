@@ -42,22 +42,22 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-bold text-slate-600">
+          <div className="hidden md:flex items-center gap-3 text-sm font-bold">
             <button
               onClick={() => scrollToSection("features")}
-              className="hover:text-[#007BC9] transition-colors"
+              className="bg-lochmara text-white px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-blue-200 transition-all duration-300 active:scale-95 shadow-lg shadow-blue-100 flex items-center justify-center"
             >
               Features
             </button>
             <button
               onClick={() => scrollToSection("how-it-works")}
-              className="hover:text-[#007BC9] transition-colors"
+              className="bg-lochmara text-white px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-blue-200 transition-all duration-300 active:scale-95 shadow-lg shadow-blue-100 flex items-center justify-center whitespace-nowrap"
             >
               How It Works
             </button>
             <button
               onClick={() => scrollToSection("products")}
-              className="hover:text-vibrant-orange transition-colors"
+              className="bg-vibrant-orange text-white px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-orange-200 transition-all duration-300 active:scale-95 shadow-lg shadow-orange-100 flex items-center justify-center"
             >
               Products
             </button>
@@ -68,9 +68,9 @@ export default function Navbar() {
               Pricing
             </button> */}
 
-            <button className="bg-vibrant-orange text-white px-8 py-3 rounded-full hover:shadow-xl hover:shadow-orange-200 transition-all duration-300 active:scale-95 shadow-lg shadow-orange-100 flex items-center gap-2">
+            {/* <button className="bg-vibrant-orange text-white px-8 py-3 rounded-full hover:shadow-xl hover:shadow-orange-200 transition-all duration-300 active:scale-95 shadow-lg shadow-orange-100 flex items-center gap-2">
               Get Started
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -93,7 +93,7 @@ export default function Navbar() {
             { id: "features", label: "Features" },
             { id: "how-it-works", label: "How It Works" },
             { id: "products", label: "Products" },
-            { id: "pricing", label: "Pricing" },
+            // { id: "pricing", label: "Pricing" },
           ].map((item) => (
             <button
               key={item.id}
@@ -105,9 +105,9 @@ export default function Navbar() {
           ))}
 
           <div className="pt-4 border-t border-slate-100 mt-4 px-2">
-            <button className="w-full bg-vibrant-orange text-white py-5 rounded-2xl font-black shadow-xl shadow-orange-100 active:scale-95 transition-transform">
+            {/* <button className="w-full bg-vibrant-orange text-white py-5 rounded-2xl font-black shadow-xl shadow-orange-100 active:scale-95 transition-transform">
               Request Demo
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
