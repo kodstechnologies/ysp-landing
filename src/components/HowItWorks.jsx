@@ -13,7 +13,13 @@ export default function HowItWorks() {
         {
             title: "Scan & Fuel",
             desc: "Staff scans the QR code and enters the fuel volume in liters during the transaction.",
-            icon: <Scan className="w-8 h-8 text-white" />,
+            icon: (
+                <div className="relative w-8 h-8 overflow-hidden">
+                    <Scan className="w-8 h-8 text-white relative z-10" />
+                    {/* Animated Scanning Line */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-white shadow-[0_0_10px_white] animate-small-qr-scan z-20" />
+                </div>
+            ),
             color: "bg-[#007BC9]",
             role: "Staff Action"
         },

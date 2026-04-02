@@ -1,7 +1,8 @@
 import React from "react";
-import adminPanel from "../assets/admin panel.jpg";
+import adminPanel from "../assets/admin-panel.jpg";
 import mobilePreview from "../assets/mobile-preview.png";
-import managerdashboard from "../assets/manager dashboard.jpeg";
+import managerdashboard from "../assets/manager-dashboard.jpeg";
+import userdashboard from "../assets/user-dashboard.png";
 
 export default function Preview() {
   return (
@@ -39,7 +40,7 @@ export default function Preview() {
             <div className="flex justify-center">
               <div className="relative w-64 md:w-72 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] rounded-[3rem] border-[8px] border-slate-900 overflow-hidden bg-slate-900 translate-y-4">
                 <img 
-                  src={mobilePreview} 
+                  src={userdashboard} 
                   alt="Customer App Preview" 
                   className="w-full h-auto"
                 />

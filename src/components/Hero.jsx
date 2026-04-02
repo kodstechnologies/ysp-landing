@@ -1,12 +1,12 @@
 import React from "react";
 import { ArrowRight, Play, CheckCircle2, QrCode } from "lucide-react";
-import adminPanel from "../assets/admin panel.jpg";
+import adminPanel from "../assets/admin-panel.jpg";
 import mobilePreview from "../assets/mobile-preview.png";
-import managerdashboard from "../assets/manager dashboard.jpeg";
+import managerdashboard from "../assets/manager-dashboard.jpeg";
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+    <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-white">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[120px] opacity-60"></div>
@@ -38,10 +38,10 @@ export default function Hero() {
                 Get Started
                 <ArrowRight size={20} />
               </button>
-              <button className="w-full sm:w-auto bg-white border-2 border-slate-200 text-slate-700 px-10 py-5 rounded-2xl font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-2 text-lg">
+              {/* <button className="w-full sm:w-auto bg-white border-2 border-slate-200 text-slate-700 px-10 py-5 rounded-2xl font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-2 text-lg">
                 <Play size={20} className="text-[#007BC9] fill-[#007BC9]" />
                 Request Demo
-              </button>
+              </button> */}
             </div>
 
             <div className="pt-8 flex flex-wrap justify-center lg:justify-start gap-6">

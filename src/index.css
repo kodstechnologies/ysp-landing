@@ -6,3 +6,69 @@
   --color-golden-yellow: #FFE000;
   --color-vibrant-orange: #FF6B00;
 }
+
+@keyframes splash-fade-in {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes title-reveal {
+  0% { width: 0; opacity: 0; }
+  100% { width: 100%; opacity: 1; }
+}
+
+@keyframes progress-fill {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes splash-exit {
+  0% { opacity: 1; pointer-events: auto; }
+  90% { opacity: 1; pointer-events: auto; }
+  100% { opacity: 0; pointer-events: none; visibility: hidden; }
+}
+
+@keyframes qr-scan {
+  0%, 100% { transform: translateY(0); opacity: 0; }
+  10%, 90% { opacity: 1; }
+  50% { transform: translateY(80px); }
+}
+
+@keyframes small-qr-scan {
+  0%, 100% { transform: translateY(0); opacity: 0; }
+  10%, 90% { opacity: 1; }
+  50% { transform: translateY(32px); }
+}
+
+@keyframes scan-line-pulse {
+  0%, 100% { opacity: 0.5; filter: blur(2px); }
+  50% { opacity: 1; filter: blur(4px); }
+}
+
+.animate-splash-fade-in {
+  animation: splash-fade-in 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-title-reveal {
+  animation: title-reveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-progress-fill {
+  animation: progress-fill 2.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.animate-splash-exit {
+  animation: splash-exit 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.animate-qr-scan {
+  animation: qr-scan 2.5s ease-in-out infinite;
+}
+
+.animate-small-qr-scan {
+  animation: small-qr-scan 2.5s ease-in-out infinite;
+}
+
+.animate-scan-line-pulse {
+  animation: scan-line-pulse 1.5s ease-in-out infinite;
+}
