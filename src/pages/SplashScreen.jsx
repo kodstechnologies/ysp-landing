@@ -29,11 +29,11 @@ const SplashScreen = ({ onComplete }) => {
       {/* Background radial glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-lochmara)_0%,_transparent_70%)] opacity-10" />
 
-      <div className="relative flex flex-col items-center">
+      <div className="relative flex flex-col items-center w-full px-6">
         {/* QR Scan Animation */}
-        <div className="mb-12 relative group animate-splash-fade-in [animation-delay:200ms]">
+        <div className="mb-8 md:mb-12 relative group animate-splash-fade-in [animation-delay:200ms]">
           {/* QR Frame Corners */}
-          <div className="relative w-32 h-32 md:w-40 md:h-40 border-2 border-white/20 rounded-2xl p-4">
+          <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 border-2 border-white/20 rounded-2xl p-4">
             <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
               <path d="M10 10h25v10H20v15H10V10zM65 10h25v25H80V20H65V10zM10 65h10v15h15v10H10V65zM80 65v15H65v10h25V65H80z" />
               <path d="M30 30h10v10H30zM50 30h10v10H50zM70 30h10v10H70zM30 50h10v10H30zM50 50h10v10H50zM70 50h10v10H70zM30 70h10v10H30zM50 70h10v10H50zM70 70h10v10H70z" opacity="0.5" />
@@ -49,21 +49,21 @@ const SplashScreen = ({ onComplete }) => {
         </div>
 
         {/* Main Logo Text */}
-        <h1 className="text-5xl md:text-7xl font-black tracking-[0.2em] text-white animate-splash-fade-in translate-z-0">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-[0.1em] sm:tracking-[0.2em] text-white animate-splash-fade-in translate-z-0 leading-none">
           YSPFUELPLUS
         </h1>
 
         {/* Subtitle */}
-        <div className="mt-4 flex items-center gap-4 w-full">
+        <div className="mt-4 flex items-center gap-2 sm:gap-4 w-full max-w-[280px] sm:max-w-md">
           <div className="h-[1px] flex-1 bg-white/20 animate-title-reveal" />
-          <span className="text-[10px] md:text-xs font-bold tracking-[0.4em] text-white/60 uppercase whitespace-nowrap animate-splash-fade-in [animation-delay:400ms]">
-            Smart Fuel Loyalty & Management
+          <span className="text-[8px] sm:text-[10px] md:text-xs font-bold tracking-[0.2em] sm:tracking-[0.4em] text-white/50 uppercase whitespace-nowrap animate-splash-fade-in [animation-delay:400ms]">
+            Station Loyalty & Management
           </span>
           <div className="h-[1px] flex-1 bg-white/20 animate-title-reveal" />
         </div>
 
         {/* Progress Bar Container */}
-        <div className="mt-12 w-48 md:w-64 h-[2px] bg-white/10 rounded-full overflow-hidden relative">
+        <div className="mt-8 md:mt-12 w-32 sm:w-48 md:w-64 h-[2px] bg-white/10 rounded-full overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-r from-lochmara via-vibrant-orange to-golden-yellow animate-progress-fill" />
         </div>
       </div>
