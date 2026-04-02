@@ -30,7 +30,7 @@ jobs:
             # echo "${{ secrets.ENV_FILE }}" > .env
 
             echo "🗑 Removing old build..."
-            rm -rf dist
+            sudo rm -rf dist
 
             echo "📦 Installing dependencies..."
             npm install
