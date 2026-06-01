@@ -79,8 +79,8 @@ export default function Footer() {
                 <span>yspfuelplus@gmail.com</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="text-[#007BC9] w-4 h-4" /> 
-                <span>+91-9731581462</span>
+                <Phone className="text-[#007BC9] w-4 h-4" />
+                <span>+91 89718 84027</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="text-[#007BC9] w-4 h-4 mt-0.5" />

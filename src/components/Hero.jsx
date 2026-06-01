@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { ArrowRight, Play, CheckCircle2, QrCode, Smartphone } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowRight, Play, CheckCircle2, QrCode, Smartphone, X } from "lucide-react";
 import adminPanel from "../assets/admin-panel.jpg";
 import mobilePreview from "../assets/mobile-preview.png";
 import managerdashboard from "../assets/manager-dashboard.jpeg";
@@ -7,27 +7,38 @@ import managerdashboard from "../assets/manager-dashboard.jpeg";
 export default function Hero() {
   const [showPopup, setShowPopup] = useState(false);
 
-  useEffect(() => {
-    if (showPopup) {
-      const timer = setTimeout(() => {
-        setShowPopup(false);
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
-  }, [showPopup]);
-
   return (
     <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-white">
       {/* Launch Popup */}
       {showPopup && (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center px-4 pointer-events-none">
-          <div className="bg-deep-blue text-white px-8 py-6 rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.5)] border border-white/10 flex flex-col items-center gap-4 animate-splash-fade-in pointer-events-auto">
+        <div 
+          className="fixed inset-0 z-[1000] flex items-center justify-center px-4 bg-black/50 backdrop-blur-sm cursor-pointer"
+          onClick={() => setShowPopup(false)}
+        >
+          <div 
+            className="bg-deep-blue text-white px-8 py-8 rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.5)] border border-white/10 flex flex-col items-center gap-4 animate-splash-fade-in relative max-w-sm w-full cursor-default"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setShowPopup(false)}
+              className="absolute top-4 right-4 text-white/40 hover:text-white/70 transition-colors"
+            >
+              <X size={20} />
+            </button>
             <div className="w-12 h-12 bg-vibrant-orange rounded-full flex items-center justify-center">
               <Smartphone className="text-white" size={24} />
             </div>
-            <div className="text-center">
-              <p className="text-lg font-black tracking-tight">The app will launch soon on Google play store.</p>
-              <p className="text-white/60 font-bold uppercase tracking-[0.2em] text-xs mt-1">Thank you</p>
+            <div className="text-center flex flex-col items-center w-full">
+              <p className="text-lg font-black tracking-tight leading-snug">The app is now live on Google Play Store!</p>
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.kods.yspfuelplususer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 bg-vibrant-orange hover:bg-vibrant-orange/90 text-white px-6 py-3 rounded-2xl font-black shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all text-base w-full justify-center"
+              >
+                Download App
+              </a>
+              <p className="text-white/60 font-bold uppercase tracking-[0.2em] text-[10px] mt-4">Thank you</p>
             </div>
           </div>
         </div>
