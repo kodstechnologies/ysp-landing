@@ -19,7 +19,7 @@ export default function App() {
         <MainLayout>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/privacy-policy" element={<LegalPage />} />
+            <Route path="/legal" element={<LegalPage />} />
             <Route path="/terms" element={<TermsConditions />} />
             <Route path="/delete" element={<DeleteAccount />} />
           </Routes>
