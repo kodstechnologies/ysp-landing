@@ -1,4 +1,4 @@
-name: Deploy Landing Page
+name: 🚀 Deploy Landing Page
 
 on:
   push:
@@ -10,24 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy via SSH
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🚀 Deploy to Azure VM
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
+          username: azureuser
           key: ${{ secrets.EC2_KEY }}
           script: |
             set -e
 
             echo "📂 Moving to project folder..."
-            cd /home/ubuntu/ysp-landing
+            cd /home/azureuser/ysp-landing
 
-            echo "📥 Pulling latest code..."
-            git fetch origin
+            echo "📥 Fetching latest code..."
+            git fetch origin main
+
+            echo "🔄 Resetting to latest main..."
             git reset --hard origin/main
-
-            # echo "📝 Creating .env file..."
-            # echo "${{ secrets.ENV_FILE }}" > .env
 
             echo "🗑 Removing old build..."
             sudo rm -rf dist
@@ -39,10 +41,16 @@ jobs:
             npm run build
 
             echo "📁 Checking dist folder..."
-            ls -lt dist
+            ls -lah dist
 
-            echo "🔄 Fix permissions..."
-            sudo chown -R www-data:www-data /home/ubuntu/ysp-landing/dist
+            echo "🔐 Fixing permissions..."
+            sudo chown -R www-data:www-data /home/azureuser/ysp-landing/dist
+            sudo chmod 755 /home/azureuser
+            sudo chmod 755 /home/azureuser/ysp-landing
+            sudo chmod -R 755 /home/azureuser/ysp-landing/dist
+
+            echo "🔄 Testing Nginx..."
+            sudo nginx -t
 
             echo "🔄 Reloading Nginx..."
             sudo systemctl reload nginx
